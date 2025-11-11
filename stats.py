@@ -37,9 +37,18 @@ def list_of_dictionaries():
     character_count.sort(reverse=True, key=sort_on)
     return character_count
 
+def print_dictionary():
+    for dictionary in list_of_dictionaries():
+        letter = dictionary["char"]
+        number = dictionary["num"]
+        print(f"{letter}: {number}")
+    return
+        
 def report():
     print("============ BOOKBOT ============")
     print("Analyzing book found at books/frankenstein.txt...")
     print("----------- Word Count ----------")
-    print(word_count)
+    print(word_count())
     print("--------- Character Count -------")
+    print_dictionary()
+    print("============= END ===============")
