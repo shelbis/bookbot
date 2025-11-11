@@ -22,3 +22,24 @@ def count_characters():
             current_count += 1
             dictionary[letter] = current_count
     return dictionary
+
+def sort_on(items):
+    return items["num"]
+
+def list_of_dictionaries():
+    character_count = []
+    dictionary = count_characters()
+    for letter in dictionary:
+        temporary_dictionary = {}
+        temporary_dictionary["char"] = letter
+        temporary_dictionary["num"] = dictionary[letter]
+        character_count.append(temporary_dictionary)
+    character_count.sort(reverse=True, key=sort_on)
+    return character_count
+
+def report():
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(word_count)
+    print("--------- Character Count -------")
