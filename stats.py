@@ -1,10 +1,12 @@
+import sys
+
 def get_book_text(file_path):
     with open(file_path) as f:
         file_contents = f.read()
     return file_contents
 
 def word_count():
-    words = get_book_text("./books/frankenstein.txt").split()
+    words = get_book_text(sys.argv[1]).split()
     total_words = len(words)
     text = f"Found {total_words} total words"
     return text
@@ -12,7 +14,7 @@ def word_count():
 def count_characters():
     count = 1
     dictionary = {}
-    text = get_book_text("./books/frankenstein.txt")
+    text = get_book_text(sys.argv[1])
     for letter in text:
         letter = letter.lower()
         if letter not in dictionary:
@@ -44,7 +46,13 @@ def print_dictionary():
         print(f"{letter}: {number}")
     return
         
+def check():
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
 def report():
+    check()
     print("============ BOOKBOT ============")
     print("Analyzing book found at books/frankenstein.txt...")
     print("----------- Word Count ----------")
